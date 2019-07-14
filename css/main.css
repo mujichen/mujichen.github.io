@@ -1991,7 +1991,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #000508;
+  background: #a4712a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2525,8 +2525,9 @@ pre .javascript .function {
   margin: 0 5px;
 }
 #gitalk-container {
+  padding: 0 20px !important;
   margin-top: 10px;
-  background: #fff;
+  background: #fff !important;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
   border-radius: 15px;
 }
@@ -3455,7 +3456,6 @@ div#posts.posts-expand .tag-cloud a {
   counter-reset: tags;
 }
 .posts-collapse .post-title {
-  font-size: 18px;
   padding-left: 10px;
 }
 @-moz-keyframes heartAnimate {
