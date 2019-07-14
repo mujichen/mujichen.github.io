@@ -1,0 +1,61 @@
+原dns：
+f1g1ns1.dnspod.net
+f1g1ns2.dnspod.net
+
+hexo clean 清除缓存
+hexo g 生成静态文件
+hexo d 部署
+
+文章meta：
+title: 文章名称
+urlname: url路径名称
+author: 作者
+type: 文章类型
+categories: 分类
+- [父, 子]
+- [父, 子]
+tags： 标签
+- tag1
+- tag2
+date: 2019-04-14 18:02:40
+password:加密文章
+hidden：是否隐藏文章
+summary_img：摘要图片
+copyright： 是否开启版权
+top： 置顶权重
+comment:是否开启评论
+
+{% meting "32785674" "netease" "song" %}
+音乐播放器 id         平台     类型
+
+note使用
+{% note %}默认 用来替代引用标签还行{%endnote%}
+{% note default %} 默认 有图标的引用标签吧{%endnote%}
+{% note info %}可以补充一些信息{%endnote%}
+{% note primary%}Primary，不知道怎么用{%endnote%}
+{% note warning%}Warning，写一些警告信息{%endnote%}
+{% note danger %}Danger,就是这样很危险吧{% endnote%}
+{% note success%}Success，成功是什么鬼啊{%endnote%}
+{% note success no-icon%}没有图标的样子{%endnote%}  
+
+label使用
+这是{% label default@Default%}
+这是{% label primary@Primary%}
+这是{% label success@Success%}
+这是{% label info@Info%}
+这是{% label warning@Warning%}
+这是{% label danger@Danger%}
+这是有删除线的~~{% label danger@Danger%}~~
+
+tag使用
+{% tabs unique name %}
+<!-- tab 名称@图标 -->
+**This is Tab 1.**
+<!-- endtab -->
+<!-- tab 亚马孙@amazon -->
+**This is Tab 2.**
+<!-- endtab -->
+<!-- tab @bold -->
+**This is Tab 3.**
+<!-- endtab -->
+{% endtabs %}
