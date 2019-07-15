@@ -151,7 +151,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/images/snapshots.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/images/deltas.png">
-<meta property="og:updated_time" content="2019-07-15T09:56:40.284Z">
+<meta property="og:updated_time" content="2019-07-15T12:03:11.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解git的快照？">
 <meta name="twitter:description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧😄，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来🤔。">
@@ -407,7 +407,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T17:56:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T20:03:11+08:00">
                 2019-07-15
               </time>
             
@@ -481,7 +481,7 @@
 <h1 id="快照怎么进行">快照怎么进行</h1>
 <p>git会读取当前工作空间的所有数据，进行数据预存，再重新调整。它会和上一次的快照版本的内容进行比较，对于没有改变的文件数据，git会把当前预存中冗余文件的数据去除掉，改为保留指向上一个版本中该文件数据的指针，对于有差异的文件数据就会保留下来，最终再把数据完整保存下来，这才算是执行了一次快照。</p>
 <h1 id="git和cvs-subversion等的区别">git和CVS,、Subversion等的区别</h1>
-<p>两者的差异在于对待保存数据的方式。前者是记录和组装一系列快照流的微型系统，关心文件数据的整体是否发生变化。每次commit的时候保存一次快照，而每个快照都包含了完整的数据；后者则关心文件内容的具体差异。第一次保存了完整的数据，往后每次保存的都不是完整的数据，只会记录基于之前的版本和现在两者的变化信息，对于此外没有变化的都不会去记录。</p>
+<p>两者的差异在于对待保存数据的方式。前者是记录和组装一系列快照流的微型系统，关心文件数据的整体是否发生变化。每次commit的时候保存一次快照，而每个快照都包含了完整的数据；后者则关心文件内容的具体差异。第一次保存了完整的数据，往后每次保存的都不是完整的数据，只会记录基于之前的版本和现在两者的变化信息<a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="noopener">gi发发生发发发示范法t</a>阿发发生发发</p>
 <p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="git"></p>
 <p><img src="https://git-scm.com/book/en/v2/images/deltas.png" alt="CVS, Subversion"></p>
 <p>本文参考：</p>
@@ -516,7 +516,7 @@
   <p><span>文章作者:</span><a href="/" title="访问 沐纪尘 的个人博客">沐纪尘</a></p>
   <p><span>本文标题:</span><a href="/10/20/how-to-understand-snapshot-in-git.html">如何理解git的快照？</a></p>
   <p><span>发布时间:</span>2018年10月20日 - 20:10</p>
-  <p><span>最后更新:</span>2019年07月15日 - 17:07</p>
+  <p><span>最后更新:</span>2019年07月15日 - 20:07</p>
   <p><span>原始链接:</span><a href="/10/20/how-to-understand-snapshot-in-git.html" title="如何理解git的快照？">https://mujichen.com/10/20/how-to-understand-snapshot-in-git.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mujichen.com/10/20/how-to-understand-snapshot-in-git.html"  aria-label="复制成功！"></i></span>
   </p>
