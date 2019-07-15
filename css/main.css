@@ -1991,7 +1991,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #40ff46;
+  background: #215262;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3300,7 +3300,7 @@ pre .javascript .function {
   background: #13c2c2;
   color: #fff;
 }
-.code ::selection {
+code ::selection {
   background: #52c41a !important;
   color: #fff;
 }
@@ -3325,8 +3325,8 @@ aside#sidebar {
 .post-tags .fa-envira {
   color: #79d626;
 }
-.code {
-  color: #ff7600;
+code {
+  color: #d05;
   background: #fbf7f8;
   margin: 2px;
 }

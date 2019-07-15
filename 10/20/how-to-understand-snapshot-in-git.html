@@ -141,20 +141,20 @@
 
 
 
-<meta name="description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来。">
+<meta name="description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧😄，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来🤔。">
 <meta name="keywords" content="git,snapshot,快照">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何理解git的快照？">
 <meta property="og:url" content="https://mujichen.com/10/20/how-to-understand-snapshot-in-git.html">
 <meta property="og:site_name" content="沐纪尘">
-<meta property="og:description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来。">
+<meta property="og:description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧😄，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来🤔。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/images/snapshots.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/images/deltas.png">
-<meta property="og:updated_time" content="2019-07-14T10:03:25.407Z">
+<meta property="og:updated_time" content="2019-07-15T07:47:01.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解git的快照？">
-<meta name="twitter:description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来。">
+<meta name="twitter:description" content="最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧😄，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来🤔。">
 <meta name="twitter:image" content="https://git-scm.com/book/en/v2/images/snapshots.png">
 
 
@@ -407,8 +407,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-14T18:03:25+08:00">
-                2019-07-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T15:47:01+08:00">
+                2019-07-15
               </time>
             
           </span>
@@ -468,20 +468,26 @@
       
 
       
-        <p>最近开始学习git的使用，发现snapshot这个术语，看得是朦朦胧胧，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来。<br><a id="more"></a></p>
-<h1 id="什么是快照"><a href="#什么是快照" class="headerlink" title="什么是快照"></a>什么是快照</h1><blockquote>
+        <p>最近开始学习<code>git</code>的使用，发现<code>snapshot</code>这个术语，看得是朦朦胧胧😄，感觉理解这个词，又感觉不是很懂，所以就去网上搜索资料，尝试用自己的理解叙述出来🤔。</p>
+<a id="more"></a>
+<h1 id="什么是快照"><a class="header-anchor" href="#什么是快照">¶</a>什么是快照</h1>
+<blockquote>
 <ul>
-<li>In computer systems, a snapshot is the state of a system at a particular point in time. </li>
+<li>In computer systems, a snapshot is the state of a system at a particular point in time.</li>
 </ul>
 </blockquote>
-<p>本人觉得快照并没含有’速度快’的意思。快照应该理解为整个系统或者应用在某个时刻的状态记录。例如，假定在A时刻，你的git工作空间分别有file1和file2，到B时刻的时候，你对file1进行了修改。<br>随后，在你准备进行一次commit之前，git就已经准备好快照了，这个快照记录了当前工作空间中指向未修改文件file2的指针和已经修改的file2数据（即当前时刻工作空间的文件数据状态）。因此，commit的时候，就等同于保存了一次快照。</p>
-<h1 id="快照怎么进行"><a href="#快照怎么进行" class="headerlink" title="快照怎么进行"></a>快照怎么进行</h1><p>git会读取当前工作空间的所有数据，进行数据预存，再重新调整。它会和上一次的快照版本的内容进行比较，对于没有改变的文件数据，git会把当前预存中冗余文件的数据去除掉，改为保留指向上一个版本中该文件数据的指针，对于有差异的文件数据就会保留下来，最终再把数据完整保存下来，这才算是执行了一次快照。</p>
-<h1 id="git和CVS-、Subversion等的区别"><a href="#git和CVS-、Subversion等的区别" class="headerlink" title="git和CVS,、Subversion等的区别"></a>git和CVS,、Subversion等的区别</h1><p>两者的差异在于对待保存数据的方式。前者是记录和组装一系列快照流的微型系统，关心文件数据的整体是否发生变化。每次commit的时候保存一次快照，而每个快照都包含了完整的数据；后者则关心文件内容的具体差异。第一次保存了完整的数据，往后每次保存的都不是完整的数据，只会记录基于之前的版本和现在两者的变化信息，对于此外没有变化的都不会去记录。</p>
+<p>本人觉得快照并没含有’速度快’的意思。快照应该理解为整个系统或者应用在某个时刻的状态记录。例如，假定在A时刻，你的git工作空间分别有file1和file2，到B时刻的时候，你对file1进行了修改。<br>
+随后，在你准备进行一次commit之前，git就已经准备好快照了，这个快照记录了当前工作空间中指向未修改文件file2的指针和已经修改的file2数据（即当前时刻工作空间的文件数据状态）。因此，commit的时候，就等同于保存了一次快照。</p>
+<h1 id="快照怎么进行"><a class="header-anchor" href="#快照怎么进行">¶</a>快照怎么进行</h1>
+<p>git会读取当前工作空间的所有数据，进行数据预存，再重新调整。它会和上一次的快照版本的内容进行比较，对于没有改变的文件数据，git会把当前预存中冗余文件的数据去除掉，改为保留指向上一个版本中该文件数据的指针，对于有差异的文件数据就会保留下来，最终再把数据完整保存下来，这才算是执行了一次快照。</p>
+<h1 id="git和cvs-subversion等的区别"><a class="header-anchor" href="#git和cvs-subversion等的区别">¶</a>git和CVS,、Subversion等的区别</h1>
+<p>两者的差异在于对待保存数据的方式。前者是记录和组装一系列快照流的微型系统，关心文件数据的整体是否发生变化。每次commit的时候保存一次快照，而每个快照都包含了完整的数据；后者则关心文件内容的具体差异。第一次保存了完整的数据，往后每次保存的都不是完整的数据，只会记录基于之前的版本和现在两者的变化信息，对于此外没有变化的都不会去记录。</p>
 <p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="git"></p>
 <p><img src="https://git-scm.com/book/en/v2/images/deltas.png" alt="CVS, Subversion"></p>
 <p>本文参考：</p>
 <blockquote>
-<p>. <a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="noopener">git</a><br>. <a href="https://www.quora.com/What-is-a-snapshot-in-Git" target="_blank" rel="noopener">quoar</a></p>
+<p>. <a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="noopener">git</a><br>
+. <a href="https://www.quora.com/What-is-a-snapshot-in-Git" target="_blank" rel="noopener">quoar</a></p>
 </blockquote>
 
       
@@ -510,7 +516,7 @@
   <p><span>文章作者:</span><a href="/" title="访问 沐纪尘 的个人博客">沐纪尘</a></p>
   <p><span>本文标题:</span><a href="/10/20/how-to-understand-snapshot-in-git.html">如何理解git的快照？</a></p>
   <p><span>发布时间:</span>2018年10月20日 - 20:10</p>
-  <p><span>最后更新:</span>2019年07月14日 - 18:07</p>
+  <p><span>最后更新:</span>2019年07月15日 - 15:07</p>
   <p><span>原始链接:</span><a href="/10/20/how-to-understand-snapshot-in-git.html" title="如何理解git的快照？">https://mujichen.com/10/20/how-to-understand-snapshot-in-git.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mujichen.com/10/20/how-to-understand-snapshot-in-git.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -765,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是快照"><span class="nav-number">1.</span> <span class="nav-text">什么是快照</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快照怎么进行"><span class="nav-number">2.</span> <span class="nav-text">快照怎么进行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git和CVS-、Subversion等的区别"><span class="nav-number">3.</span> <span class="nav-text">git和CVS,、Subversion等的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是快照"><span class="nav-number">1.</span> <span class="nav-text">¶什么是快照</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快照怎么进行"><span class="nav-number">2.</span> <span class="nav-text">¶快照怎么进行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git和cvs-subversion等的区别"><span class="nav-number">3.</span> <span class="nav-text">¶git和CVS,、Subversion等的区别</span></a></li></ol></div>
             
 
           </div>
