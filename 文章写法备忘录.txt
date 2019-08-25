@@ -21,6 +21,7 @@ date: 2019-04-14 18:02:40
 password:加密文章
 hidden：是否隐藏文章
 summary_img：摘要图片
+dividing_line：文章前后分割线修饰
 copyright： 是否开启版权
 top： 置顶权重
 comment:是否开启评论
