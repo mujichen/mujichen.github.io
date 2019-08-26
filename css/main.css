@@ -1991,7 +1991,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #dd0bac;
+  background: #37ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3287,7 +3287,7 @@ pre .javascript .function {
     margin: 8px 0 0;
   }
 }
-* {
+body {
   cursor: url("https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@1.0/images/mouse.cur"), auto !important;
 }
 :active {
