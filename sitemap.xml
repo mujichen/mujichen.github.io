@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://mujichen.com/08/27/object-initialization.html</loc>
+    
+    <lastmod>2019-08-27T08:02:21.278Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://mujichen.com/08/26/pass-by-value.html</loc>
     
     <lastmod>2019-08-26T10:01:36.744Z</lastmod>
