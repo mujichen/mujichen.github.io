@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://mujichen.com/article/autoboxing-and-unboxing.html</loc>
+    
+    <lastmod>2019-08-29T12:47:59.971Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://mujichen.com/article/inheritance-and-polymorphic.html</loc>
     
     <lastmod>2019-08-29T12:37:26.297Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://mujichen.com/article/how-to-understand-snapshot-in-git.html</loc>
     
     <lastmod>2019-08-29T12:10:25.004Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://mujichen.com/article/autoboxing-and-unboxing.html</loc>
-    
-    <lastmod>2019-08-29T10:46:48.116Z</lastmod>
     
   </url>
   
