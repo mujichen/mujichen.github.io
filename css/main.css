@@ -1991,7 +1991,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #982bff;
+  background: #0105f2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3388,7 +3388,6 @@ span.color {
   line-height: 1;
   color: #fff;
   text-align: center;
-  white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0;
 }

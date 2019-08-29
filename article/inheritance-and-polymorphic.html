@@ -147,7 +147,7 @@
 <meta property="og:url" content="https://mujichen.com/article/inheritance-and-polymorphic.html">
 <meta property="og:site_name" content="沐纪尘">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-29T07:26:20.692Z">
+<meta property="og:updated_time" content="2019-08-29T12:37:26.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识Java：继承和多态">
 
@@ -401,7 +401,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T15:26:20+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T20:37:26+08:00">
                 2019-08-29
               </time>
             
@@ -437,12 +437,18 @@
 
           
           
-
+             <span id="/article/inheritance-and-polymorphic.html" class="leancloud_visitors" data-flag-title="认识Java：继承和多态">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
+
           
 
           
@@ -490,7 +496,7 @@
   可以举个具体点的例子来阐明上述说法。假设A作者编写了BaseList类，像ArrayList、LinkList一样，能够动态存储一组元素并且记录储存的数目。B作者编写了SuperList，继承了BaseList并且能够记录它被创建以来曾经添加了多少次元素。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseList</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//添加操作</span></span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addAll</span><span class="params">(Collection&lt;E&gt; collection)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//添加操作</span></span><br><span class="line">        size += collection.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//其他增删改查等方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">BaseList</span>&lt;<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">    <span class="comment">/** 添加元素次数统计*/</span></span><br><span class="line">    <span class="keyword">int</span> addCount;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        addCount++;</span><br><span class="line">        <span class="keyword">super</span>.add(e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addAll</span><span class="params">(Collection&lt;E&gt; c)</span> </span>&#123;</span><br><span class="line">        addCount += c.size();</span><br><span class="line">        <span class="keyword">super</span>.addAll(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><span class="color yellow">接下来，A作者对BaseList的addAll方法做了修改</span></p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class BaseList&lt;E&gt; &#123;</span><br><span class="line">    <span class="built_in">int</span> <span class="built_in">size</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="built_in">add</span>(E e) &#123;</span><br><span class="line">        <span class="comment">//添加操作</span></span><br><span class="line">        <span class="built_in">size</span>++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**修改后的addAll方法*/</span></span><br><span class="line">    <span class="keyword">void</span> addAll(Collection&lt;E&gt; collection) &#123;</span><br><span class="line">        Iterator it = collection.iterator();</span><br><span class="line">        <span class="keyword">for</span> (; it.hasNext(); ) &#123;</span><br><span class="line">            <span class="built_in">add</span>((E) it.next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//其他增删改查等方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        ArrayList apps = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        apps.<span class="built_in">add</span>(<span class="string">"qq"</span>);</span><br><span class="line">        apps.<span class="built_in">add</span>(<span class="string">"wechat"</span>);</span><br><span class="line">        apps.<span class="built_in">add</span>(<span class="string">"taobao"</span>);</span><br><span class="line">        SuperList superList = <span class="keyword">new</span> SuperList();</span><br><span class="line">        superList.addAll(apps);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"添加元素次数统计："</span> + superList.addCount);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class BaseList&lt;E&gt; &#123;</span><br><span class="line">    <span class="built_in">int</span> <span class="built_in">size</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="built_in">add</span>(E e) &#123;</span><br><span class="line">        <span class="comment">//添加操作</span></span><br><span class="line">        <span class="built_in">size</span>++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**修改后的addAll方法*/</span></span><br><span class="line">    <span class="keyword">void</span> addAll(Collection&lt;E&gt; collection) &#123;</span><br><span class="line">        Iterator it = collection.iterator();</span><br><span class="line">        <span class="keyword">for</span> (; it.hasNext(); ) &#123;</span><br><span class="line">            <span class="built_in">add</span>((E) it.next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//其他增删改查等方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Demo3 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        ArrayList apps = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        apps.<span class="built_in">add</span>(<span class="string">"qq"</span>);</span><br><span class="line">        apps.<span class="built_in">add</span>(<span class="string">"wechat"</span>);</span><br><span class="line">        apps.<span class="built_in">add</span>(<span class="string">"taobao"</span>);</span><br><span class="line">        SuperList superList = <span class="keyword">new</span> SuperList();</span><br><span class="line">        superList.addAll(apps);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"添加元素次数统计："</span> + superList.addCount);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加元素次数统计：<span class="number">6</span></span><br></pre></td></tr></table></figure>
 <p>  更改BaseList的addAll方法后，在调用SuperList的addAll方法时，会把集合元素数目的统计结果加到addCount中，之后调用父类的addAll方法；在父类BaseList的addAll方法中又调用了add方法，根据动态绑定，实际上是调用了SuperList覆盖父类的add方法，这样子就会遍历调用SuperList的add方法，addCount又再一次把集合元素数目的结果加了一遍；输出的时候，addCount正确应该是等于3.可是错误的变成了6。<br>
 <span class="color blue">随后，A作者撤销BaseList的addAll方法的修改，而B作者给SuperList添加了inverse方法</span></p>
@@ -528,7 +534,7 @@
   <p><span>文章作者:</span><a href="/" title="访问 沐纪尘 的个人博客">沐纪尘</a></p>
   <p><span>本文标题:</span><a href="/article/inheritance-and-polymorphic.html">认识Java：继承和多态</a></p>
   <p><span>发布时间:</span>2019年08月28日 - 10:08</p>
-  <p><span>最后更新:</span>2019年08月29日 - 15:08</p>
+  <p><span>最后更新:</span>2019年08月29日 - 20:08</p>
   <p><span>原始链接:</span><a href="/article/inheritance-and-polymorphic.html" title="认识Java：继承和多态">https://mujichen.com/article/inheritance-and-polymorphic.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mujichen.com/article/inheritance-and-polymorphic.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -633,6 +639,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/article/autoboxing-and-unboxing.html" rel="prev" title="认识Java：自动装箱和拆箱">
+                认识Java：自动装箱和拆箱 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -649,12 +659,6 @@
 
 
     <div class="post-spread">
-      
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d29a5f6fdf9998b" async = "async" ></script>
-</div>
-
       
     </div>
   </div>
@@ -722,7 +726,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -846,14 +850,6 @@
 
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-
-  
-</div>
-
 
 
 
@@ -1342,6 +1338,113 @@
   
 
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QIJy4q2SqK5KmW5PLBv6hq7r-gzGzoHsz", "2I71LkahuY9lzO8sT1HS3Vzw");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
 
   
 <script>
@@ -1376,11 +1479,23 @@
 
   <!-- 页面点击效果 -->
   
-   <script type="text/javascript" src="/js/src/click-effects.js"></script>
+   <script async src="/js/src/click-fireworks.js"></script>
+  
   
   <!-- 彩带背景效果 -->
   
-   <script id="ribbon" width="1500" size="300" alpha='0.6' zIndex="-1" src="/js/src/canvas-ribbon.min.js"></script>
+  <canvas id="evanyou"></canvas>
+	<style>
+	#evanyou {
+	  position: fixed;
+	  width: 100%;
+	  height: 100%;
+	  top: 0;
+	  left: 0;
+	  z-index: -1;
+	}
+	</style>
+	<script src="/js/src/canvas-evan-you.js"></script>
   
 </body>
 </html>
