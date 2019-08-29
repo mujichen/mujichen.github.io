@@ -2,28 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://mujichen.com/08/27/object-initialization.html</loc>
+    <loc>https://mujichen.com/article/inheritance-and-polymorphic.html</loc>
+    
+    <lastmod>2019-08-29T07:26:20.692Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://mujichen.com/article/object-initialization.html</loc>
     
     <lastmod>2019-08-27T08:02:21.278Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://mujichen.com/08/26/pass-by-value.html</loc>
+    <loc>https://mujichen.com/article/pass-by-value.html</loc>
     
     <lastmod>2019-08-26T10:01:36.744Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://mujichen.com/07/17/what-is-Java.html</loc>
+    <loc>https://mujichen.com/article/what-is-Java.html</loc>
     
     <lastmod>2019-08-25T13:51:09.900Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://mujichen.com/10/20/how-to-understand-snapshot-in-git.html</loc>
+    <loc>https://mujichen.com/article/how-to-understand-snapshot-in-git.html</loc>
     
     <lastmod>2019-08-25T08:07:47.857Z</lastmod>
     
