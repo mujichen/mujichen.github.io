@@ -29,6 +29,9 @@ comment:是否开启评论
 {% meting "32785674" "netease" "song" %}
 音乐播放器 id         平台     类型
 
+文字背景设：
+span.color:yellow、green、blue、purple
+
 note使用
 {% note %}默认 用来替代引用标签还行{%endnote%}
 {% note default %} 默认 有图标的引用标签吧{%endnote%}
