@@ -141,18 +141,18 @@
 
 
 
-<meta name="description" content="在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于主数据类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。">
+<meta name="description" content="在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于基本类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。">
 <meta name="keywords" content="Java,值传递,引用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识Java：值传递">
 <meta property="og:url" content="https://mujichen.com/article/pass-by-value.html">
 <meta property="og:site_name" content="沐纪尘">
-<meta property="og:description" content="在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于主数据类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。">
+<meta property="og:description" content="在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于基本类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T10:01:36.744Z">
+<meta property="og:updated_time" content="2019-09-02T06:52:41.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识Java：值传递">
-<meta name="twitter:description" content="在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于主数据类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。">
+<meta name="twitter:description" content="在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于基本类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。">
 
 
 
@@ -459,11 +459,11 @@
       
 
       
-        <p>  在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于主数据类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。</p>
+        <p>  在数据传递的时候，Java是通过值传递的，也就是说通过拷贝传递。对于基本类型来说，拷贝它实际的数值；引用类型也只是个变量值，并非是对象本身，所以拷贝的是对象的引用变量值。</p>
 <a id="more"></a>  
 <h1 id="概述">概述</h1>
 <ul>
-<li>主数据类型：
+<li>基本类型：
 <ul>
 <li>整型：byte、short、int、long</li>
 <li>浮点型：float，double</li>
@@ -483,16 +483,16 @@
 <li>值传递（pass by value）：在调用方法时将实际参数复制一份传递到方法中，这样在方法中如果对参数进行修改，将不会影响到实际参数</li>
 <li>引用传递（pass by reference）：在调用方法时将实际参数的地址直接传递到方法中，那么在方法中对参数所进行的修改，将影响到实际参数</li>
 </ul>
-<h1 id="主数据类型传递">主数据类型传递</h1>
+<h1 id="基本类型传递">基本类型传递</h1>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo1</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">7</span>;</span><br><span class="line">        print(x);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"print in main method: x is "</span> + x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span>(<span class="params"><span class="keyword">int</span> x</span>)</span> &#123;</span><br><span class="line">        x = <span class="number">13</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"print in change method: x is "</span> + x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print <span class="keyword">in</span> change <span class="function"><span class="keyword">method</span>:</span> x <span class="keyword">is</span> <span class="number">13</span></span><br><span class="line">print <span class="keyword">in</span> main <span class="function"><span class="keyword">method</span>:</span> x <span class="keyword">is</span> <span class="number">7</span></span><br></pre></td></tr></table></figure>
-<p>可见，change方法内部对x的值的修改并没有改变实际参数x的值。即Java中，主数据类型是值传递的。</p>
+<div class="note info"><p>可见，change方法内部对x的值的修改并没有改变实际参数x的值。即Java中，基本类型是值传递的。</p></div>
 <h1 id="引用类型传递">引用类型传递</h1>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo2</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">        Dog dog = <span class="keyword">new</span> Dog(<span class="string">"哈士奇"</span>);</span><br><span class="line">        change(dog);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"print in main method: dog is "</span> + dog);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span>(<span class="params">Dog dog</span>)</span> &#123;</span><br><span class="line">        dog = <span class="keyword">new</span> Dog(<span class="string">"拉布拉多"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"print in change method: dog is "</span> + dog);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print <span class="keyword">in</span> change <span class="function"><span class="keyword">method</span>:</span> dog <span class="keyword">is</span> 拉布拉多</span><br><span class="line">print <span class="keyword">in</span> main <span class="function"><span class="keyword">method</span>:</span> dog <span class="keyword">is</span> 哈士奇</span><br></pre></td></tr></table></figure>
-<p>可见，change方法内部对dog的值的修改并没有改变实际参数dog的值。即Java中，引用类型是值传递的。</p>
+<div class="note info"><p>可见，change方法内部对dog的值的修改并没有改变实际参数dog的值。即Java中，引用类型是值传递的。</p></div>
 <h1 id="总结">总结</h1>
-<p>  在Java中无论什么传递都是值传递，主数据类型本身是数值，所以传递的值就是拷贝的数值，而引用本身是记录对象元数据的变量值，所以传递的值就是拷贝的引用变量值。</p>
+<p>  在Java中无论什么传递都是值传递，基本类型本身是数值，所以传递的值就是拷贝的数值，而引用本身是记录对象元数据的变量值，所以传递的值就是拷贝的引用变量值。</p>
 
       
     </div>
@@ -520,7 +520,7 @@
   <p><span>文章作者:</span><a href="/" title="访问 沐纪尘 的个人博客">沐纪尘</a></p>
   <p><span>本文标题:</span><a href="/article/pass-by-value.html">认识Java：值传递</a></p>
   <p><span>发布时间:</span>2019年08月26日 - 14:08</p>
-  <p><span>最后更新:</span>2019年08月26日 - 18:08</p>
+  <p><span>最后更新:</span>2019年09月02日 - 14:09</p>
   <p><span>原始链接:</span><a href="/article/pass-by-value.html" title="认识Java：值传递">https://mujichen.com/article/pass-by-value.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mujichen.com/article/pass-by-value.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -734,7 +734,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -789,7 +789,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主数据类型传递"><span class="nav-number">2.</span> <span class="nav-text">主数据类型传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用类型传递"><span class="nav-number">3.</span> <span class="nav-text">引用类型传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型传递"><span class="nav-number">2.</span> <span class="nav-text">基本类型传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用类型传递"><span class="nav-number">3.</span> <span class="nav-text">引用类型传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

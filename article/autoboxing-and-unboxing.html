@@ -141,15 +141,18 @@
 
 
 
+<meta name="description" content="基本类型 大小（bit） 数值范围 默认值 包装类型     boolean —— true、false false Boolean   char 16 \u0000 至 \ufff \u0000 Character   byte 8 -2^7 至 2^7-1 0 Byte   short 16 -2^15 至 2^15-1 0 Short   int 32 -2^31 至 2^32-1 0">
 <meta name="keywords" content="Java,自动装箱">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识Java：自动装箱和拆箱">
 <meta property="og:url" content="https://mujichen.com/article/autoboxing-and-unboxing.html">
 <meta property="og:site_name" content="沐纪尘">
+<meta property="og:description" content="基本类型 大小（bit） 数值范围 默认值 包装类型     boolean —— true、false false Boolean   char 16 \u0000 至 \ufff \u0000 Character   byte 8 -2^7 至 2^7-1 0 Byte   short 16 -2^15 至 2^15-1 0 Short   int 32 -2^31 至 2^32-1 0">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-29T12:47:59.971Z">
+<meta property="og:updated_time" content="2019-09-02T15:52:35.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识Java：自动装箱和拆箱">
+<meta name="twitter:description" content="基本类型 大小（bit） 数值范围 默认值 包装类型     boolean —— true、false false Boolean   char 16 \u0000 至 \ufff \u0000 Character   byte 8 -2^7 至 2^7-1 0 Byte   short 16 -2^15 至 2^15-1 0 Short   int 32 -2^31 至 2^32-1 0">
 
 
 
@@ -456,7 +459,114 @@
       
 
       
-        
+        <table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>大小（bit）</th>
+<th>数值范围</th>
+<th>默认值</th>
+<th>包装类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>——</td>
+<td>true、false</td>
+<td>false</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16</td>
+<td>\u0000 至 \ufff</td>
+<td>\u0000</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>8</td>
+<td>-2^7 至 2^7-1</td>
+<td>0</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16</td>
+<td>-2^15 至 2^15-1</td>
+<td>0</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32</td>
+<td>-2^31 至 2^32-1</td>
+<td>0</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64</td>
+<td>-2^63 至 2^63-1</td>
+<td>0</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32</td>
+<td>约从4.9e-324 至 1.8e + 308</td>
+<td>0.0f</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64</td>
+<td>约从4.9e-324 至 1.8e + 308</td>
+<td>0.0</td>
+<td>Double</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>  
+<h1 id="概述">概述</h1>
+<ul>
+<li>自动装箱: 基本类型自动转换成对应的包装类</li>
+<li>自动拆箱：包装类自动转换成对应的基本类型</li>
+</ul>
+<h1 id="基本类型与包装类">基本类型与包装类</h1>
+<p>  为什么不全部都是对象?基本类型的变量不需要实例化，他们不会在堆上创建，而是直接在栈内存中存储，因此会更加高效。为什么需要包装类？Java是面向对象的编程语言，很多地方都需要操作对象而并非是基本类型。比如，在集合中，我们是无法将int 、double等基本类型直接放进去的。因此，需要通过包装类包装成对象，方便在需要或者只能操纵对象的地方使用。</p>
+<h1 id="自动装箱与拆箱的实现原理">自动装箱与拆箱的实现原理</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Integer integer = <span class="number">1</span>; <span class="comment">//装箱</span></span><br><span class="line">    <span class="keyword">int</span> i = integer; <span class="comment">//拆箱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>实际编译器执行的代码</p></div>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> static void main(String[] args)&#123;</span><br><span class="line">    <span class="keyword">Integer</span> <span class="keyword">integer</span> = <span class="keyword">Integer</span>.valueOf(<span class="number">1</span>); </span><br><span class="line">    <span class="built_in">int</span> i = <span class="keyword">integer</span>.intValue(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note success"><p>实际上，自动装箱都是通过包装类的valueOf()方法来实现的，自动拆箱都是通过包装类对象的xxxValue()来实现的。</p></div>
+<h1 id="自动装箱与拆箱的场景">自动装箱与拆箱的场景</h1>
+<h2 id="赋值">赋值</h2>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Integer</span> <span class="keyword">integer</span> = <span class="number">1</span>; <span class="comment">//装箱</span></span><br><span class="line">int i = <span class="keyword">integer</span>; <span class="comment">//拆箱</span></span><br></pre></td></tr></table></figure>
+<h2 id="集合">集合</h2>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ArrayList</span>&lt;<span class="type">Integer</span>&gt; numList = <span class="function"><span class="keyword">new</span> <span class="title">ArrayList</span>&lt;&gt;();</span></span><br><span class="line"><span class="function"><span class="title">numList</span>.<span class="title">add</span>(<span class="number">1</span>);</span></span><br></pre></td></tr></table></figure>
+<h2 id="包装类和基本类型比较大小">包装类和基本类型比较大小</h2>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Integer integer</span> = 1;</span><br><span class="line"><span class="attribute">boolean test</span> = integer &gt; 12;</span><br></pre></td></tr></table></figure>
+<h2 id="算术运算">算术运算</h2>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">int res</span> = integer + 12;</span><br></pre></td></tr></table></figure>
+<h2 id="方法中的参数">方法中的参数</h2>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo1</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = testAutoBoxing(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">testAutoBoxing</span>(<span class="params">Integer integer</span>)</span> &#123;</span><br><span class="line">        System.<span class="keyword">out</span>.println(integer);</span><br><span class="line">        <span class="keyword">return</span> integer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="注意事项">注意事项</h1>
+<h2 id="性能">性能</h2>
+<p>  自动装拆箱是需要消耗资源和性能的。如果通过重复频繁地自动装拆箱来创建对象，会导致大量资源和性能的浪费。例如for循环中有大量装拆箱操作，这很可能会浪费很多资源和性能。</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer <span class="keyword">sum</span> = <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">128</span>; i&lt;<span class="number">10000</span>; i++)&#123;</span><br><span class="line">   <span class="keyword">sum</span> = <span class="keyword">sum</span> + i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>循环体里面不断地创建无用对象</p></div>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sum</span> = <span class="literal">new</span> <span class="built_in">Integer</span>(<span class="keyword">sum</span>.intValue() + i);</span><br></pre></td></tr></table></figure>
+<h2 id="比较">比较</h2>
+<p>  equals() 比较的是两个对象的值（内容）是否相同；&quot;==&quot; 比较的是两个对象的引用（内存地址）是否相同，也可以用来比较两个基本类型的数值是否相等。然而，比较包装对象的数值不能简单的使用&quot;==&quot;，虽然<code>-128</code>到<code>127</code>之间的数字可以（这涉及到Java的Integer缓存机制），但是这个范围之外还是需要使用equals比较。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo1</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 由于Java的Integer缓存机制，在缓冲池中的-128至127的Integer对象都会从重复使用，</span></span><br><span class="line">        <span class="comment">// 做 == 比较时，都是指向缓冲池的同一个对象，所以地址相同，判断为true</span></span><br><span class="line">        Integer x1 = <span class="number">10</span>;</span><br><span class="line">        Integer x2 = <span class="number">10</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"x1 == x2: "</span> + (x1 == x2));</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"x1.equals(x2): "</span> + x1.<span class="keyword">equals</span>(x2));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不在-128至127范围的时候，Java就会实例化新的Integer对象</span></span><br><span class="line">        <span class="comment">// 做 == 比较时，实例化的对象不同，所以地址不相同，判断为false</span></span><br><span class="line">        Integer y1 = <span class="number">128</span>;</span><br><span class="line">        Integer y2 = <span class="number">128</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"y1 == y2: "</span> + (y1 == y2));</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"y1.equals(y2): "</span> + y1.<span class="keyword">equals</span>(y2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">x1</span> <span class="string">==</span> <span class="attr">x2:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">x1.equals(x2):</span> <span class="literal">true</span></span><br><span class="line"><span class="string">y1</span> <span class="string">==</span> <span class="attr">y2:</span> <span class="literal">false</span></span><br><span class="line"><span class="string">y1.equals(y2):</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="空指针异常">空指针异常</h2>
+<p>  混乱使用对象和基本类型，容易导致我们忽略初始化对象的包装类属性。当一个基本类型与一个包装类型进行比较时，这个对象的包装类型属性没有人为进行初始化，在自动拆箱过程中调用xxxValue时，就会抛出NullPointerException。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo2</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> Integer noInitNum;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">        System.<span class="keyword">out</span>.println(noInitNum &gt; <span class="number">12</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java<span class="selector-class">.lang</span><span class="selector-class">.NullPointerException</span></span><br><span class="line">	at autoboxingAndUnboxing<span class="selector-class">.Demo2</span><span class="selector-class">.main</span>(Demo2<span class="selector-class">.java</span>:<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -483,7 +593,7 @@
   <p><span>文章作者:</span><a href="/" title="访问 沐纪尘 的个人博客">沐纪尘</a></p>
   <p><span>本文标题:</span><a href="/article/autoboxing-and-unboxing.html">认识Java：自动装箱和拆箱</a></p>
   <p><span>发布时间:</span>2019年08月29日 - 18:08</p>
-  <p><span>最后更新:</span>2019年08月29日 - 20:08</p>
+  <p><span>最后更新:</span>2019年09月02日 - 23:09</p>
   <p><span>原始链接:</span><a href="/article/autoboxing-and-unboxing.html" title="认识Java：自动装箱和拆箱">https://mujichen.com/article/autoboxing-and-unboxing.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mujichen.com/article/autoboxing-and-unboxing.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -640,8 +750,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -684,7 +803,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -729,6 +848,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型与包装类"><span class="nav-number">2.</span> <span class="nav-text">基本类型与包装类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动装箱与拆箱的实现原理"><span class="nav-number">3.</span> <span class="nav-text">自动装箱与拆箱的实现原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动装箱与拆箱的场景"><span class="nav-number">4.</span> <span class="nav-text">自动装箱与拆箱的场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值"><span class="nav-number">4.1.</span> <span class="nav-text">赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">4.2.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装类和基本类型比较大小"><span class="nav-number">4.3.</span> <span class="nav-text">包装类和基本类型比较大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算"><span class="nav-number">4.4.</span> <span class="nav-text">算术运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法中的参数"><span class="nav-number">4.5.</span> <span class="nav-text">方法中的参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">5.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能"><span class="nav-number">5.1.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较"><span class="nav-number">5.2.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空指针异常"><span class="nav-number">5.3.</span> <span class="nav-text">空指针异常</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

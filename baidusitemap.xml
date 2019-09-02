@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mujichen.com/article/autoboxing-and-unboxing.html</loc>
-    <lastmod>2019-08-29</lastmod>
+    <lastmod>2019-09-02</lastmod>
+  </url>  <url>
+    <loc>https://mujichen.com/article/pass-by-value.html</loc>
+    <lastmod>2019-09-02</lastmod>
   </url>  <url>
     <loc>https://mujichen.com/article/inheritance-and-polymorphic.html</loc>
-    <lastmod>2019-08-29</lastmod>
+    <lastmod>2019-08-30</lastmod>
+  </url>  <url>
+    <loc>https://mujichen.com/article/what-is-Java.html</loc>
+    <lastmod>2019-08-30</lastmod>
   </url>  <url>
     <loc>https://mujichen.com/article/how-to-understand-snapshot-in-git.html</loc>
     <lastmod>2019-08-29</lastmod>
   </url>  <url>
     <loc>https://mujichen.com/article/object-initialization.html</loc>
     <lastmod>2019-08-27</lastmod>
-  </url>  <url>
-    <loc>https://mujichen.com/article/pass-by-value.html</loc>
-    <lastmod>2019-08-26</lastmod>
-  </url>  <url>
-    <loc>https://mujichen.com/article/what-is-Java.html</loc>
-    <lastmod>2019-08-25</lastmod>
   </url>
 </urlset>
